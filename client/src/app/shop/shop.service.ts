@@ -1,3 +1,4 @@
+import { IProduct } from 'src/app/shared/models/product';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { IPagination } from '../shared/models/pagination';
@@ -41,6 +42,12 @@ export class ShopService {
         })
       );
   }
+
+  // tslint:disable-next-line: typedef
+  getProduct(id: number) {
+    return this.http.get<IProduct>(this.baseUrl + 'products/' + id);
+  }
+
   // tslint:disable-next-line: typedef
   getBrands() {
     return this.http.get<IBrand[]>(this.baseUrl + 'products/brands');
