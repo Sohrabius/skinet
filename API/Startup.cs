@@ -13,6 +13,7 @@ using API.Extensions;
 using Microsoft.AspNetCore.Mvc;
 using System.Linq;
 using Microsoft.OpenApi.Models;
+using StackExchange.Redis;
 
 namespace API
 {
@@ -33,9 +34,9 @@ namespace API
             services.AddDbContext<StoreContext>(x => x.UseSqlite(_config.GetConnectionString("DefaultConnection")));
 
             // add new database for basket api
-            services.AddSingleton<IConnerctionMultiplexer>(c=>{
+            services.AddSingleton<IConnectionMultiplexer>(c=>{
                 var configuration = ConfigurationOptions.Parse(_config.GetConnectionString("Redis"), true);
-                return ConnerctionMultiplexer.Connect(configuration);
+                return ConnectionMultiplexer.Connect(configuration);
             });
 
             //Ioc
