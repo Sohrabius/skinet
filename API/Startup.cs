@@ -12,6 +12,7 @@ using API.Middleware;
 using API.Extensions;
 using Microsoft.AspNetCore.Mvc;
 using System.Linq;
+using Infrastructure.Identity;
 using Microsoft.OpenApi.Models;
 using StackExchange.Redis;
 
@@ -32,7 +33,11 @@ namespace API
             services.AddControllers();
             //config database context
             services.AddDbContext<StoreContext>(x => x.UseSqlite(_config.GetConnectionString("DefaultConnection")));
-
+            // add identity db context
+            services.AddDbContext<AppIdentityDbContext>(x =>
+            {
+                x.UseSqlite(_config.GetConnectionString("IdentityConnection"));
+            });
             // add new database for basket api
             services.AddSingleton<IConnectionMultiplexer>(c=>{
                 var configuration = ConfigurationOptions.Parse(_config.GetConnectionString("Redis"), true);
@@ -46,6 +51,7 @@ namespace API
 
             //error handle
             services.AddApplicationServices();
+            services.AddIdentityServices(_config);
             services.AddSwaggerDocumentation();
             
             services.AddCors(opt => 
@@ -72,6 +78,7 @@ namespace API
 
             app.UseCors("CorsPolicy");
 
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseSwaggerDocumention();
