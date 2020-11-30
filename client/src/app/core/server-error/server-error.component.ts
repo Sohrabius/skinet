@@ -14,7 +14,6 @@ export class ServerErrorComponent implements OnInit {
     this.error = navigation && navigation.extras && navigation.extras.state && navigation.extras.state.error;
   }
 
-  // tslint:disable-next-line: typedef
   ngOnInit() {
   }
 

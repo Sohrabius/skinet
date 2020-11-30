@@ -4,7 +4,7 @@ using System.Linq.Expressions;
 
 namespace Core.Specifications
 {
-    public class BaseSpecification<T> : ISpecifications<T>
+    public class BaseSpecification<T> : ISpecification<T>
     {
         public BaseSpecification()
         {
@@ -46,7 +46,6 @@ namespace Core.Specifications
             Skip = skip;
             Take = take;
             IsPagingEnabled = true;
-
         }
     }
 }

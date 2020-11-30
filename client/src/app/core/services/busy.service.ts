@@ -9,7 +9,6 @@ export class BusyService {
 
   constructor(private spinnerService: NgxSpinnerService) { }
 
-  // tslint:disable-next-line: typedef
   busy() {
     this.busyRequestCount++;
     this.spinnerService.show(undefined, {
@@ -19,7 +18,6 @@ export class BusyService {
     });
   }
 
-  // tslint:disable-next-line: typedef
   idle() {
     this.busyRequestCount--;
     if (this.busyRequestCount <= 0) {
