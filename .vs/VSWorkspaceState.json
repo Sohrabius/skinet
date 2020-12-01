@@ -1,10 +1,15 @@
 {
   "ExpandedNodes": [
     "",
-    "\\API",
     "\\API\\Extensions",
-    "\\client\\src\\app\\home"
+    "\\client\\src",
+    "\\client\\src\\app",
+    "\\client\\src\\app\\basket",
+    "\\client\\src\\app\\checkout",
+    "\\client\\src\\app\\checkout\\checkout-payment",
+    "\\client\\src\\app\\shared",
+    "\\client\\src\\app\\shared\\models"
   ],
-  "SelectedNode": "\\API\\Properties",
+  "SelectedNode": "\\client",
   "PreviewInSolutionExplorer": false
 }
